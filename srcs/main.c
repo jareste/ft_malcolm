@@ -225,6 +225,8 @@ void send_arp_reply(const char *src_ip, const char *src_mac, const char *tgt_ip,
     memcpy(arp_hdr->arp_tha, ether_aton(tgt_mac)->ether_addr_octet, ETH_ALEN);
     inet_pton(AF_INET, tgt_ip, arp_hdr->arp_tpa);
 
+    printf("Sending ARP reply packet to %s at %s\n", tgt_ip, tgt_mac);
+
     if (sendto(sockfd, buffer, sizeof(buffer), 0, (struct sockaddr *)&socket_address, sizeof(socket_address)) < 0)
     {
         fprintf(stderr, "ft_malcolm: failed to send ARP reply\n");
