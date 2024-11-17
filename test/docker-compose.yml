@@ -21,14 +21,6 @@ services:
         ipv4_address: 192.168.0.3
     command: tail -f /dev/null # Keeps the container running
 
-  victim2:
-    image: alpine
-    container_name: arp_victim2
-    networks:
-      arp_network:
-        ipv4_address: 192.168.0.4
-    command: tail -f /dev/null # Keeps the container running
-
 networks:
   arp_network:
     driver: bridge
